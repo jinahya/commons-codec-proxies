@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>commons-codec-proxies - Checkstyle report</title>
+    <link>https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT</link>
+    <description>commons-codec-proxies - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2011 - 2013</copyright>
+    <item>
+      <title>File: 8,
+             Errors: 25,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html</link>
+      <description>
+        <p>Click <a href="https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html#com.github.jinahya.codec.commons.DecoderProxy.java">com/github/jinahya/codec/commons/DecoderProxy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html#com.github.jinahya.codec.commons.BinaryDecoderProxy.java">com/github/jinahya/codec/commons/BinaryDecoderProxy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html#com.github.jinahya.codec.commons.AbstractDecoderProxy.java">com/github/jinahya/codec/commons/AbstractDecoderProxy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html#com.github.jinahya.codec.commons.EncoderProxy.java">com/github/jinahya/codec/commons/EncoderProxy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html#com.github.jinahya.codec.commons.AbstractEncoderProxy.java">com/github/jinahya/codec/commons/AbstractEncoderProxy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html#com.github.jinahya.codec.commons.BinaryEncoderProxy.java">com/github/jinahya/codec/commons/BinaryEncoderProxy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html#com.github.jinahya.codec.commons.StringEncoderProxy.java">com/github/jinahya/codec/commons/StringEncoderProxy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://www.jinahya.com/mvn/site/com.github.jinahya/commons-codec-proxies/1.0.1-SNAPSHOT/checkstyle.html#com.github.jinahya.codec.commons.StringDecoderProxy.java">com/github/jinahya/codec/commons/StringDecoderProxy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+
