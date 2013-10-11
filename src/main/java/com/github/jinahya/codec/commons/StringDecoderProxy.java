@@ -22,23 +22,27 @@ import java.lang.reflect.Method;
 
 
 /**
- * Abstract class for proxies of {@code org.apache.commons.codec.StringDecoder}.
+ * Abstract class for proxies of {@link org.apache.commons.codec.StringDecoder}.
  *
  * @author Jin Kwon <jinahya at gmail.com>
- * @param <D> decoder type parameter.
+ * @param <T> decoder type parameter.
  */
-public abstract class StringDecoderProxy<D> extends DecoderProxy<D> {
+public abstract class StringDecoderProxy<T> extends DecoderProxy<T> {
+
+
+    private static final String DECODER_NAME =
+        "org.apache.commons.codec.StringDecoder";
 
 
     /**
-     * {@code org.apache.commons.codec.StringDecoder}.
+     * the class of {@link org.apache.commons.codec.StringDecoder}.
      */
     private static final Class<?> DECODER;
 
 
     static {
         try {
-            DECODER = Class.forName("org.apache.commons.codec.StringDecoder");
+            DECODER = Class.forName(DECODER_NAME);
         } catch (final ClassNotFoundException cnfe) {
             throw new InstantiationError(cnfe.getMessage());
         }
@@ -46,7 +50,7 @@ public abstract class StringDecoderProxy<D> extends DecoderProxy<D> {
 
 
     /**
-     * {@code decode(Ljava/lang/String;)Ljava/lang/String;}.
+     * the method of {@code decode(Ljava/lang/String;)Ljava/lang/String;}.
      */
     private static final Method DECODE;
 
@@ -94,7 +98,7 @@ public abstract class StringDecoderProxy<D> extends DecoderProxy<D> {
      *
      * @param decoder the decoder to use.
      */
-    protected StringDecoderProxy(final D decoder) {
+    protected StringDecoderProxy(final T decoder) {
 
         super(decoder);
     }
@@ -135,5 +139,5 @@ public abstract class StringDecoderProxy<D> extends DecoderProxy<D> {
      */
     protected abstract String decode(final String source) throws Throwable;
 
-
 }
+

@@ -37,10 +37,11 @@ public class RareEncoder {
 
 
     /**
+     * Bypasses given {@code source}.
      *
-     * @param source
+     * @param source source to bypass
      *
-     * @return
+     * @return given {@code source}.
      */
     public Object encode(final Object source) {
 
@@ -53,5 +54,5 @@ public class RareEncoder {
         return source;
     }
 
-
 }
+

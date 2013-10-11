@@ -22,6 +22,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -34,28 +36,52 @@ public abstract class AbstractDecoderProxy<T> implements InvocationHandler {
 
 
     /**
-     * Class for {@code org.apache.commons.codec.DecoderException}.
+     * logger.
+     */
+    private static final Logger LOGGER =
+        LoggerFactory.getLogger(AbstractDecoderProxy.class);
+
+
+    private static final String DECODER_EXCEPTION_NAME =
+        "org.apache.commons.codec.DecoderException";
+
+
+    /**
+     * Class for {@link org.apache.commons.codec.DecoderException}.
      */
     protected static final Class<? extends Throwable> DECODER_EXCEPTION;
 
 
     static {
+//        final Class<?> loaded;
+//        try {
+//            final Thread currentThread = Thread.currentThread();
+//            LOGGER.debug("currentThread: {}", currentThread);
+//            ClassLoader classLoader = currentThread.getContextClassLoader();
+//            if (classLoader == null) {
+//                classLoader = AbstractDecoderProxy.class.getClassLoader();
+//            }
+//            LOGGER.debug("classLoader: {}", classLoader);
+//            loaded = classLoader.loadClass(DECODER_EXCEPTION_NAME);
+//        } catch (final ClassNotFoundException cnfe) {
+//            throw new InstantiationError(cnfe.getMessage());
+//        }
+        final Class<?> named;
         try {
-            DECODER_EXCEPTION = Class.forName(
-                "org.apache.commons.codec.DecoderException").
-                asSubclass(Throwable.class);
+            named = Class.forName(DECODER_EXCEPTION_NAME);
         } catch (final ClassNotFoundException cnfe) {
             throw new InstantiationError(cnfe.getMessage());
         }
+        DECODER_EXCEPTION = named.asSubclass(Throwable.class);
     }
 
 
     /**
      * Creates a new instance of
-     * {@code org.apache.commons.codec.DecoderException}.
+     * {@link org.apache.commons.codec.DecoderException}.
      *
      * @return a new instance of
-     * {@code org.apache.commons.codec.DecoderException}.
+     * {@link org.apache.commons.codec.DecoderException}.
      */
     protected static Throwable newDecoderException() {
 
@@ -71,13 +97,13 @@ public abstract class AbstractDecoderProxy<T> implements InvocationHandler {
 
     /**
      * Creates a new instance of
-     * {@code org.apache.commons.codec.DecoderException} with given
+     * {@link org.apache.commons.codec.DecoderException} with given
      * {@code message}.
      *
      * @param message message
      *
      * @return a new instance of
-     * {@code org.apache.commons.codec.DecoderException}.
+     * {@link org.apache.commons.codec.DecoderException}.
      */
     protected static Throwable newDecoderException(final String message) {
 
@@ -98,14 +124,14 @@ public abstract class AbstractDecoderProxy<T> implements InvocationHandler {
 
     /**
      * Creates a new instance of
-     * {@code org.apache.commons.codec.DecoderException} with given
+     * {@link org.apache.commons.codec.DecoderException} with given
      * {@code message} and {@code cause}.
      *
      * @param message message
      * @param cause cause
      *
      * @return a new instance of
-     * {@code org.apache.commons.codec.DecoderException}.
+     * {@link org.apache.commons.codec.DecoderException}.
      */
     protected static Throwable newDecoderException(final String message,
                                                    final Throwable cause) {
@@ -128,13 +154,13 @@ public abstract class AbstractDecoderProxy<T> implements InvocationHandler {
 
     /**
      * Creates a new instance of
-     * {@code org.apache.commons.codec.DecoderException} with given
+     * {@link org.apache.commons.codec.DecoderException} with given
      * {@code cause}.
      *
      * @param cause cause
      *
      * @return a new instance of
-     * {@code org.apache.commons.codec.DecoderException}.
+     * {@link org.apache.commons.codec.DecoderException}.
      */
     protected static Throwable newDecoderException(final Throwable cause) {
 
@@ -187,7 +213,7 @@ public abstract class AbstractDecoderProxy<T> implements InvocationHandler {
         }
 
         if (decoder == null) {
-            // ok?
+            //throw new NullPointerException("decoder");
         }
 
         try {
@@ -206,7 +232,7 @@ public abstract class AbstractDecoderProxy<T> implements InvocationHandler {
             } catch (final InvocationTargetException ite) {
                 throw new RuntimeException(ite);
             }
-        } catch (NoSuchMethodException nsme) {
+        } catch (final NoSuchMethodException nsme) {
             throw new RuntimeException(nsme);
         }
     }
@@ -222,7 +248,7 @@ public abstract class AbstractDecoderProxy<T> implements InvocationHandler {
         super();
 
         if (decoder == null) {
-            // ok
+            //throw new NullPointerException("decoder");
         }
 
         this.decoder = decoder;
@@ -232,7 +258,8 @@ public abstract class AbstractDecoderProxy<T> implements InvocationHandler {
     /**
      * The decoder instance passed in constructor. Maybe {@code null}.
      */
-    protected final T decoder;
+    protected T decoder;
 
 
 }
+

@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 
 
 /**
- * Abstract class for proxies of {@code org.apache.commons.codec.Decoder}.
+ * Abstract class for proxies of {@link org.apache.commons.codec.Decoder}.
  *
  * @author Jin Kwon <jinahya at gmail.com>
  * @param <T> decoder(delegate) type parameter.
@@ -30,15 +30,19 @@ import java.lang.reflect.Method;
 public abstract class DecoderProxy<T> extends AbstractDecoderProxy<T> {
 
 
+    private static final String DECODER_NAME =
+        "org.apache.commons.codec.Decoder";
+
+
     /**
-     * {@code org.apache.commons.codec.Decoder}.
+     * the class of {@link org.apache.commons.codec.Decoder}.
      */
     private static final Class<?> DECODER;
 
 
     static {
         try {
-            DECODER = Class.forName("org.apache.commons.codec.Decoder");
+            DECODER = Class.forName(DECODER_NAME);
         } catch (final ClassNotFoundException cnfe) {
             throw new InstantiationError(cnfe.getMessage());
         }
@@ -46,7 +50,7 @@ public abstract class DecoderProxy<T> extends AbstractDecoderProxy<T> {
 
 
     /**
-     * {@code decode(Ljava/lang/Object;)Ljava/lang/Object}.
+     * the method of {@code decode(Ljava/lang/Object;)Ljava/lang/Object}.
      */
     private static final Method DECODE;
 
@@ -62,7 +66,7 @@ public abstract class DecoderProxy<T> extends AbstractDecoderProxy<T> {
 
     /**
      * Creates a new proxy instance for
-     * {@code org.apache.commons.codec.Decoder}.
+     * {@link org.apache.commons.codec.Decoder}.
      *
      * @param <P> proxy type parameter.
      * @param <T> decoder type parameter.
@@ -125,5 +129,5 @@ public abstract class DecoderProxy<T> extends AbstractDecoderProxy<T> {
      */
     protected abstract Object decode(final Object source) throws Throwable;
 
-
 }
+

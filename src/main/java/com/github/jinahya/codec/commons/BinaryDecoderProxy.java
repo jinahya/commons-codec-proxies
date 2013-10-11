@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 
 
 /**
- * Abstract class for proxies of {@code org.apache.commons.codec.BinaryDecoder}.
+ * Abstract class for proxies of {@link org.apache.commons.codec.BinaryDecoder}.
  *
  * @author Jin Kwon <jinahya at gmail.com>
  * @param <T> decoder type parameter
@@ -30,15 +30,19 @@ import java.lang.reflect.Method;
 public abstract class BinaryDecoderProxy<T> extends DecoderProxy<T> {
 
 
+    private static final String DECODER_NAME =
+        "org.apache.commons.codec.BinaryDecoder";
+
+
     /**
-     * {@code org.apache.commons.codec.BinaryDecoder}.
+     * the class of {@link org.apache.commons.codec.BinaryDecoder}.
      */
     private static final Class<?> DECODER;
 
 
     static {
         try {
-            DECODER = Class.forName("org.apache.commons.codec.BinaryDecoder");
+            DECODER = Class.forName(DECODER_NAME);
         } catch (final ClassNotFoundException cnfe) {
             throw new InstantiationError(cnfe.getMessage());
         }
@@ -46,7 +50,7 @@ public abstract class BinaryDecoderProxy<T> extends DecoderProxy<T> {
 
 
     /**
-     * {@code decode([b)[b}.
+     * the method of {@code decode([b)[b}.
      */
     private static final Method DECODE;
 
@@ -135,5 +139,5 @@ public abstract class BinaryDecoderProxy<T> extends DecoderProxy<T> {
      */
     protected abstract byte[] decode(final byte[] source) throws Throwable;
 
-
 }
+

@@ -22,6 +22,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -33,27 +35,50 @@ import java.lang.reflect.Proxy;
 public abstract class AbstractEncoderProxy<T> implements InvocationHandler {
 
 
+    private static final Logger LOGGER =
+        LoggerFactory.getLogger(AbstractEncoderProxy.class);
+
+
+    private static final String ENCODER_EXCEPTION_NAME =
+        "org.apache.commons.codec.EncoderException";
+
+
     /**
-     * the class for {@code org.apache.commons.codec.EncoderException}.
+     * the class for {@link org.apache.commons.codec.EncoderException}.
      */
     protected static final Class<? extends Throwable> ENCODER_EXCEPTION;
 
 
     static {
+//        final Class<?> loaded;
+//        try {
+//            final Thread currentThread = Thread.currentThread();
+//            LOGGER.debug("currentThread: {}", currentThread);
+//            ClassLoader classLoader = currentThread.getContextClassLoader();
+//            if (classLoader == null) {
+//                classLoader = AbstractDecoderProxy.class.getClassLoader();
+//            }
+//            LOGGER.debug("classLoader: {}", classLoader);
+//            loaded = classLoader.loadClass(ENCODER_EXCEPTION_NAME);
+//        } catch (final ClassNotFoundException cnfe) {
+//            throw new InstantiationError(cnfe.getMessage());
+//        }
+        final Class<?> named;
         try {
-            ENCODER_EXCEPTION = Class.forName(
-                "org.apache.commons.codec.EncoderException").
-                asSubclass(Throwable.class);
+            named = Class.forName(ENCODER_EXCEPTION_NAME);
         } catch (final ClassNotFoundException cnfe) {
             throw new InstantiationError(cnfe.getMessage());
         }
+        ENCODER_EXCEPTION = named.asSubclass(Throwable.class);
     }
 
 
     /**
-     * Creates a new {@code EncoderException}.
+     * Creates a new instance of
+     * {@link org.apache.commons.codec.EncoderException}.
      *
-     * @return a new instance of {@code EncoderException}.
+     * @return a new instance of
+     * {@link org.apache.commons.codec.EncoderException}.
      */
     protected static Throwable newEncoderException() {
 
@@ -69,13 +94,12 @@ public abstract class AbstractEncoderProxy<T> implements InvocationHandler {
 
     /**
      * Creates a new instance of
-     * {@code org.apache.commons.codec.EncoderException} with given
-     * {@code message}.
+     * {@link org.apache.commons.codec.EncoderException} with given message.
      *
-     * @param message message
+     * @param message the message
      *
      * @return a new instance of
-     * {@code org.apache.commons.codec.EncoderException}.
+     * {@link org.apache.commons.codec.EncoderException}
      */
     protected static Throwable newEncoderException(final String message) {
 
@@ -96,13 +120,13 @@ public abstract class AbstractEncoderProxy<T> implements InvocationHandler {
 
     /**
      * Creates a new instance of
-     * {@code org.apache.commons.codec.EncoderException} with given
+     * {@link org.apache.commons.codec.EncoderException} with given
      * {@code cause}.
      *
-     * @param cause cause
+     * @param cause the cause
      *
      * @return a new instance of
-     * {@code org.apache.commons.codec.EncoderException}.
+     * {@link org.apache.commons.codec.EncoderException}
      */
     protected static Throwable newEncoderException(final Throwable cause) {
 
@@ -123,14 +147,14 @@ public abstract class AbstractEncoderProxy<T> implements InvocationHandler {
 
     /**
      * Creates a new instance of
-     * {@code org.apache.commons.codec.EncoderException} with given
+     * {@link org.apache.commons.codec.EncoderException} with given
      * {@code message} and {@code cause}.
      *
-     * @param message message
-     * @param cause cause
+     * @param message the message
+     * @param cause the cause
      *
      * @return a new instance of
-     * {@code org.apache.commons.codec.EncoderException}.
+     * {@link org.apache.commons.codec.EncoderException}
      */
     protected static Throwable newEncoderException(final String message,
                                                    final Throwable cause) {
@@ -159,8 +183,8 @@ public abstract class AbstractEncoderProxy<T> implements InvocationHandler {
      * @param loader class loader
      * @param interfaces interfaces
      * @param proxyType proxy type
-     * @param decoderType encoder type
-     * @param decoder encoder
+     * @param encoderType encoder type
+     * @param encoder encoder
      *
      * @return a new proxy instance.
      */
@@ -185,7 +209,7 @@ public abstract class AbstractEncoderProxy<T> implements InvocationHandler {
         }
 
         if (encoder == null) {
-            // ok
+            //throw new NullPointerException("encoder");
         }
 
         try {
@@ -220,7 +244,7 @@ public abstract class AbstractEncoderProxy<T> implements InvocationHandler {
         super();
 
         if (encoder == null) {
-            // ok
+            //throw new NullPointerException("encoder");
         }
 
         this.encoder = encoder;
@@ -230,7 +254,8 @@ public abstract class AbstractEncoderProxy<T> implements InvocationHandler {
     /**
      * The encoder instance passed in constructor. Maybe {@code null}.
      */
-    protected final T encoder;
+    protected T encoder;
 
 
 }
+

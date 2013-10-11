@@ -22,31 +22,35 @@ import java.lang.reflect.Method;
 
 
 /**
- * An abstract class for {@code org.apache.commons.codec.BinaryEncoder} proxies.
+ * An abstract class for {@link org.apache.commons.codec.BinaryEncoder} proxies.
  *
  * @author Jin Kwon <jinahya at gmail.com>
- * @param <T> encoder(delegate) type parameter
+ * @param <T> encoder type parameter
  */
 public abstract class BinaryEncoderProxy<T> extends EncoderProxy<T> {
 
 
+    private static final String ENCODER_NAME =
+        "org.apache.commons.codec.BinaryEncoder";
+
+
     /**
-     * {@code org.apache.commons.codec.BinaryEncoder}.
+     * the class of {@link org.apache.commons.codec.BinaryEncoder}.
      */
     private static final Class<?> ENCODER;
 
 
     static {
         try {
-            ENCODER = Class.forName("org.apache.commons.codec.BinaryEncoder");
-        } catch (ClassNotFoundException cnfe) {
+            ENCODER = Class.forName(ENCODER_NAME);
+        } catch (final ClassNotFoundException cnfe) {
             throw new InstantiationError(cnfe.getMessage());
         }
     }
 
 
     /**
-     * {@code encode([B)[B}.
+     * the method of {@code encode([B)[B}.
      */
     private static final Method ENCODE;
 
@@ -79,9 +83,9 @@ public abstract class BinaryEncoderProxy<T> extends EncoderProxy<T> {
 
 
     /**
-     * Creates a new instance.
+     * Creates a new proxy instance for specified encoder.
      *
-     * @param encoder delegate
+     * @param encoder the encoder for which to serve as a proxy
      */
     protected BinaryEncoderProxy(final T encoder) {
 
@@ -124,5 +128,5 @@ public abstract class BinaryEncoderProxy<T> extends EncoderProxy<T> {
      */
     protected abstract byte[] encode(final byte[] source) throws Throwable;
 
-
 }
+

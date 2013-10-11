@@ -22,23 +22,27 @@ import java.lang.reflect.Method;
 
 
 /**
- * Abstract class for proxies of {@code org.apache.commons.codec.StringEncoder}.
+ * Abstract class for proxies of {@link org.apache.commons.codec.StringEncoder}.
  *
  * @author Jin Kwon <jinahya at gmail.com>
- * @param <E> encoder (delegate) type parameter
+ * @param <T> encoder (delegate) type parameter
  */
-public abstract class StringEncoderProxy<E> extends EncoderProxy<E> {
+public abstract class StringEncoderProxy<T> extends EncoderProxy<T> {
+
+
+    private static final String ENCODER_NAME =
+        "org.apache.commons.codec.StringEncoder";
 
 
     /**
-     * {@code org.apache.commons.codec.StringEncoder}.
+     * the class of {@link org.apache.commons.codec.StringEncoder}.
      */
     private static final Class<?> ENCODER;
 
 
     static {
         try {
-            ENCODER = Class.forName("org.apache.commons.codec.StringEncoder");
+            ENCODER = Class.forName(ENCODER_NAME);
         } catch (final ClassNotFoundException cnfe) {
             throw new InstantiationError(cnfe.getMessage());
         }
@@ -46,7 +50,7 @@ public abstract class StringEncoderProxy<E> extends EncoderProxy<E> {
 
 
     /**
-     * {@code encode(Ljava/lang/String;)Ljava/lang/String;}.
+     * the method of {@code encode(Ljava/lang/String;)Ljava/lang/String;}.
      */
     private static final Method ENCODE;
 
@@ -94,7 +98,7 @@ public abstract class StringEncoderProxy<E> extends EncoderProxy<E> {
      *
      * @param encoder encoding delegate
      */
-    protected StringEncoderProxy(final E encoder) {
+    protected StringEncoderProxy(final T encoder) {
 
         super(encoder);
     }
@@ -135,5 +139,5 @@ public abstract class StringEncoderProxy<E> extends EncoderProxy<E> {
      */
     protected abstract String encode(final String source) throws Throwable;
 
-
 }
+

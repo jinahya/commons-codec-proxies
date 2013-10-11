@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 
 
 /**
- * An abstract class for {@code org.apache.commons.codec.Encoder} proxies.
+ * An abstract class for {@link org.apache.commons.codec.Encoder} proxies.
  *
  * @author Jin Kwon <jinahya at gmail.com>
  * @param <T> encoder (delegate) type parameter.
@@ -30,15 +30,19 @@ import java.lang.reflect.Method;
 public abstract class EncoderProxy<T> extends AbstractEncoderProxy<T> {
 
 
+    private static final String ENCODER_NAME =
+        "org.apache.commons.codec.Encoder";
+
+
     /**
-     * {@code org.apache.commons.codec.Encoder}.
+     * the class of {@link org.apache.commons.codec.Encoder}.
      */
     private static final Class<?> ENCODER;
 
 
     static {
         try {
-            ENCODER = Class.forName("org.apache.commons.codec.Encoder");
+            ENCODER = Class.forName(ENCODER_NAME);
         } catch (final ClassNotFoundException cnfe) {
             throw new InstantiationError(cnfe.getMessage());
         }
@@ -46,7 +50,7 @@ public abstract class EncoderProxy<T> extends AbstractEncoderProxy<T> {
 
 
     /**
-     * {@code encode(Ljava/lang/Object;)Ljava/lang/Object;}.
+     * the method of {@code encode(Ljava/lang/Object;)Ljava/lang/Object;}.
      */
     private static final Method ENCODE;
 
@@ -62,7 +66,7 @@ public abstract class EncoderProxy<T> extends AbstractEncoderProxy<T> {
 
     /**
      * Creates a new proxy instance for
-     * {@code org.apache.commons.codec.Encoder}.
+     * {@link org.apache.commons.codec.Encoder}.
      *
      * @param <P> proxy type parameter
      * @param <T> encoder (delegate) type parameter
@@ -78,7 +82,7 @@ public abstract class EncoderProxy<T> extends AbstractEncoderProxy<T> {
         if (proxyType == null) {
             throw new NullPointerException("proxyType");
         }
-        
+
         if (!EncoderProxy.class.isAssignableFrom(proxyType)) {
             throw new IllegalArgumentException(
                 "proxyType(" + proxyType + ") is not assignable to "
@@ -125,5 +129,5 @@ public abstract class EncoderProxy<T> extends AbstractEncoderProxy<T> {
      */
     protected abstract Object encode(final Object source) throws Throwable;
 
-
 }
+
