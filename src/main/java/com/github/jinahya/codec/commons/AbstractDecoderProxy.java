@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Abstract class for decoder proxies.
  *
- * @author Jin Kwon <jinahya at gmail.com>
+ * @author <a href="mailto:jinahya@gmail.com">Jin Kwon</a>
  * @param <T> decoder(delegate) type parameter.
  */
 public abstract class AbstractDecoderProxy<T> implements InvocationHandler {

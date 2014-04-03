@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Abstract class for encoder proxies.
  *
- * @author Jin Kwon <jinahya at gmail.com>
+ * @author <a href="mailto:jinahya@gmail.com">Jin Kwon</a>
  * @param <T> encoder (delegate) type parameter.
  */
 public abstract class AbstractEncoderProxy<T> implements InvocationHandler {

@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
 /**
  * An abstract class for {@link org.apache.commons.codec.BinaryEncoder} proxies.
  *
- * @author Jin Kwon <jinahya at gmail.com>
+ * @author <a href="mailto:jinahya@gmail.com">Jin Kwon</a>
  * @param <T> encoder type parameter
  */
 public abstract class BinaryEncoderProxy<T> extends EncoderProxy<T> {

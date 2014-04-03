@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
 /**
  * Abstract class for proxies of {@link org.apache.commons.codec.StringEncoder}.
  *
- * @author Jin Kwon <jinahya at gmail.com>
+ * @author <a href="mailto:jinahya@gmail.com">Jin Kwon</a>
  * @param <T> encoder (delegate) type parameter
  */
 public abstract class StringEncoderProxy<T> extends EncoderProxy<T> {

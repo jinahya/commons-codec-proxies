@@ -20,7 +20,7 @@ package com.github.jinahya.codec.commons;
 
 /**
  *
- * @author Jin Kwon <jinahya at gmail.com>
+ * @author <a href="mailto:jinahya@gmail.com">Jin Kwon</a>
  */
 public class RareStringDecoder {
 

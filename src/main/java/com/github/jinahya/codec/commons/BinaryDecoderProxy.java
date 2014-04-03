@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
 /**
  * Abstract class for proxies of {@link org.apache.commons.codec.BinaryDecoder}.
  *
- * @author Jin Kwon <jinahya at gmail.com>
+ * @author <a href="mailto:jinahya@gmail.com">Jin Kwon</a>
  * @param <T> decoder type parameter
  */
 public abstract class BinaryDecoderProxy<T> extends DecoderProxy<T> {
